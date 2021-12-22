@@ -4,12 +4,14 @@
 #include <stdio.h>
 #include <netinet/ip.h>
 
+#define MAX_CLIENTS 65536
+
 int		count = 0, max_fd = 0;
-int		ids[16*16*16*16];
-char	*msgs[16*16*16*16];
+int		ids[MAX_CLIENTS];
+char	*msgs[MAX_CLIENTS];
 
 fd_set	rfds, wfds, afds;
-char	buf_read[4096 + 1], buf_write[42];
+char	buf_read[1001], buf_write[42];
 
 
 // START COPY-PASTE FROM GIVEN MAIN
@@ -171,7 +173,7 @@ int		main(int ac, char **av)
 			}
 			else
 			{
-				int read_bytes = recv(fd, buf_read, 4096, 0);
+				int read_bytes = recv(fd, buf_read, 1000, 0);
 				if (read_bytes <= 0)
 				{
 					remove_client(fd);
