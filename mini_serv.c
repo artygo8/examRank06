@@ -131,7 +131,6 @@ int		main(int ac, char **av)
 	FD_ZERO(&afds);
 	int sockfd = create_socket();
 
-
 	// START COPY-PASTE FROM MAIN
 
 	struct sockaddr_in servaddr;
@@ -162,6 +161,7 @@ int		main(int ac, char **av)
 
 			if (fd == sockfd)
 			{
+				socklen_t addr_len = sizeof(servaddr);
 				int client_fd = accept(sockfd, (struct sockaddr *)&servaddr, &addr_len);
 				if (client_fd >= 0)
 				{
