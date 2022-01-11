@@ -4,11 +4,9 @@
 #include <stdio.h>
 #include <netinet/ip.h>
 
-#define MAX_CLIENTS 65536
-
 int		count = 0, max_fd = 0;
-int		ids[MAX_CLIENTS];
-char	*msgs[MAX_CLIENTS];
+int		ids[65536];
+char	*msgs[65536];
 
 fd_set	rfds, wfds, afds;
 char	buf_read[1001], buf_write[42];
